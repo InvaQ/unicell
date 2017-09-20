@@ -25,7 +25,7 @@ export function userRequest() {
 
     dispatch(userRequestStarted());
 
-    return dispatch(fetch('http://192.168.1.5:3000/users/get_users'))
+    return dispatch(fetch('htths://ur_website.com/controller_name/action_name'))
       .then(parseResponse)
       .then(({ payload }) => dispatch(userRequestFinished(payload.users)))
       .catch(({ errors }) => dispatch(userRequestError(errors)));
