@@ -18,7 +18,7 @@ app.use((req, res) => {
 
   return store.dispatch(initialize({
     backend: {
-      apiUrl: 'http://192.168.1.5:3000',
+      apiUrl: 'htths://ur_website.com',
       authProviderPaths: {
         github: '/auth/github'
       },
@@ -29,15 +29,15 @@ app.use((req, res) => {
   }))
   .then(() => store.dispatch(userRequest()))
   .then(() => match({ routes: routes(store), location: req.url }, (error, redirectLocation, renderProps) => {
-    if (redirectLocation) { // Если необходимо сделать redirect
+    if (redirectLocation) {
       return res.redirect(301, redirectLocation.pathname + redirectLocation.search);
     }
 
-    if (error) { // Произошла ошибка любого рода
+    if (error) {
       return res.status(500).send(error.message);
     }
 
-    if (!renderProps) { // мы не определили путь, который бы подошел для URL
+    if (!renderProps) {
       return res.status(404).send('Not found');
     }
 
